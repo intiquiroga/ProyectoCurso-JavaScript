@@ -31,42 +31,63 @@
       this.nombre = nombre ;
       this.horas_de_trabajo = horas_de_trabajo ;
    }
-   get_datos () {
-      console.log ("ahorromensual: ",this.ahorro_mes);
-      console.log ("nombre", this.nombre);
-      console.log ("horasdetrabajo",this.horas_de_trabajo)
-   }
- }
+  }
+//   get_datos () {
+//      console.log ("ahorromensual: ",this.ahorro_mes);
+ //     console.log ("nombre", this.nombre);
+ //     console.log ("horasdetrabajo",this.horas_de_trabajo)
+ //  }
+// }
 
- let lista_ahorradores = [];
- for(let i = 0; i < 3 ; i= i + 1){
+ //let lista_ahorradores = [];
+ //for(let value of lista_ahorradores){
    
-   let ahorro_mes = prompt ("mi capacidad de ahorro del mes es de :");
-   let nombre = prompt ("mi nombre es");
-   let horas_de_trabajo = prompt ("Ingrese la cantidad de horas que trabaja por semana");
-   let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
+ //  let ahorro_mes = document.getElementById("capacidad_de_ahorro");
+ //  console.log (ahorro_mes.value);
+ //  let nombre = document.getElementById ("nombre");
+ //  console.log(nombre.value)
+ //  let horas_de_trabajo = document.getElementById ("horas_de_trabajo").value;
+ //  console.log(horas_de_trabajo.value)
+ //  let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
-   lista_ahorradores.push (ahorrador)
- } 
- console.log (lista_ahorradores)
+ //  lista_ahorradores.push (ahorrador)
+ //} 
 
- for (let ahorrador of lista_ahorradores){
-   ahorrador.get_datos ()
- }
+let lista_ahorradores = [];
 
- function buscar_ahorrador(ahorrador) {
-   return ahorrador.nombre= ahorrador_solicitado   
- }
+function ahorrador (){
+  let ahorro_mes = document.getElementById("ahorro_mes");
+  console.log (ahorro_mes.value );
+  let nombre = document.getElementById ("nombre");
+  console.log(nombre.value)
+  let horas_de_trabajo = document.getElementById ("horas_de_trabajo");
+  console.log(horas_de_trabajo.value)
+  let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
- let= ahorrador_solicitado =prompt ("ingrese el nombre del ahorrador");
+  lista_ahorradores.push (ahorrador)
+} 
+console.log (lista_ahorradores)
 
- let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
+// console.log (lista_ahorradores)
 
- if (resultado_Find != undefined ) {
+ //for (let ahorrador of lista_ahorradores){
+ //  ahorrador.get_datos ()
+// }
 
-   console.log (resultado_Find)
+ //function buscar_ahorrador(ahorrador) {
+ //  return ahorrador.nombre= ahorrador_solicitado   
+ //}
 
- }
- else {
-   console.log("ahorrador no encontrado")
- }
+ //let= ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
+
+ //let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
+
+ //if (resultado_Find != undefined ) {
+
+//   console.log (resultado_Find)
+
+// }
+// else {
+//   console.log("ahorrador no encontrado")
+// }
+localStorage.setItem(lista_ahorradores)

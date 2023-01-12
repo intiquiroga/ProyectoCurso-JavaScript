@@ -1,0 +1,12 @@
+.imagenlogo{
+    width: 40px;
+    height: 40px;
+}
+.navbarestilo{
+    display: flex;
+    justify-content: center;
+}
+.navbarestilo2 .li{
+    display: flex;
+    justify-content: end;
+}
