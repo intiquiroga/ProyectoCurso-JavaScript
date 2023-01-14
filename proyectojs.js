@@ -21,17 +21,18 @@
 
 // }
 
- 
+ //
 
  class Ahorrador {
+  constructor (ahorro_mes,nombre,horas_de_trabajo){
 
-   constructor (ahorro_mes,nombre,horas_de_trabajo){
-
-      this.ahorro_mes = ahorro_mes;
-      this.nombre = nombre ;
-      this.horas_de_trabajo = horas_de_trabajo ;
-   }
+    this.ahorro_mes = ahorro_mes;     
+    this.nombre = nombre ;
+    this.horas_de_trabajo = horas_de_trabajo ;
   }
+ }
+
+
 //   get_datos () {
 //      console.log ("ahorromensual: ",this.ahorro_mes);
  //     console.log ("nombre", this.nombre);
@@ -52,42 +53,59 @@
 
  //  lista_ahorradores.push (ahorrador)
  //} 
+  //let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
+    let lista_ahorradores = [];
 
-let lista_ahorradores = [];
+    let formulario = document.getElementById("formulario");
+    formulario.addEventListener("submit", function (e) {
+      
+      e.preventDefault();
+      let ahorro_mes = document.getElementById("ahorro_mes");
+      console.log ("Ahorro del mes",ahorro_mes.value );  
 
-function ahorrador (){
-  let ahorro_mes = document.getElementById("ahorro_mes");
-  console.log (ahorro_mes.value );
-  let nombre = document.getElementById ("nombre");
-  console.log(nombre.value)
-  let horas_de_trabajo = document.getElementById ("horas_de_trabajo");
-  console.log(horas_de_trabajo.value)
-  let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
+    
+      let nombre = document.getElementById ("nombre");
+      console.log("Nombre", nombre.value) ;
+  
+      let horas_de_trabajo = document.getElementById ("horas_de_trabajo");
+      console.log("Horas De Trabajo",horas_de_trabajo.value) ;
 
-  lista_ahorradores.push (ahorrador)
-} 
-console.log (lista_ahorradores)
+      let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
-// console.log (lista_ahorradores)
+      lista_ahorradores.push (ahorrador)
 
- //for (let ahorrador of lista_ahorradores){
- //  ahorrador.get_datos ()
-// }
+  })
+  
+   
 
- //function buscar_ahorrador(ahorrador) {
- //  return ahorrador.nombre= ahorrador_solicitado   
- //}
+  console.log (lista_ahorradores)
+  
+ let db_ahorradores = localStorage.setItem( 'lista_ahorradores',true)
+ let busqueda_ahorradores = document.getElementById("busqueda_ahorradores")
+ busqueda_ahorradores.addEventListener ("submit" ,function (e){
+  console.log (buscar_ahorrador)
+ })
+ 
+ for (let i=0 ; i < localStorage.length ; i = i + 1){
+     let ahorradores = localStorage.key(i)
 
- //let= ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
+    //ahorrador.get_datos ()
+   }
 
- //let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
+  function buscar_ahorrador(ahorrador) {
+     return ahorrador.nombre = ahorrador_solicitado   
+   }
 
- //if (resultado_Find != undefined ) {
+  let= ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
 
-//   console.log (resultado_Find)
+  let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
 
-// }
-// else {
-//   console.log("ahorrador no encontrado")
-// }
-localStorage.setItem(lista_ahorradores)
+  if (resultado_Find != undefined ) {
+
+  console.log (resultado_Find)
+
+ }
+  else {
+   console.log("ahorrador no encontrado")
+  }
+
