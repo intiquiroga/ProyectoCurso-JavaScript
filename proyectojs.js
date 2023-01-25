@@ -1,5 +1,12 @@
 
 
+/* LLAMADO A LA API */
+fetch("https://api.exchangerate.host/latest")
+   .then(response =>response.json())
+
+   let peso = document.getElementById ("peso")    
+    console.log (data=>console.group(data.rates))
+
 
 
 
@@ -21,8 +28,12 @@
 
 // }
 
- //
 
+
+  
+
+
+ /* OBJETO CLASE */
  class Ahorrador {
   constructor (ahorro_mes,nombre,horas_de_trabajo){
 
@@ -31,7 +42,7 @@
     this.horas_de_trabajo = horas_de_trabajo ;
   }
  }
-
+/* FIN OBJETO CLASE */
 
 //   get_datos () {
 //      console.log ("ahorromensual: ",this.ahorro_mes);
@@ -54,9 +65,12 @@
  //  lista_ahorradores.push (ahorrador)
  //} 
   //let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
-    let lista_ahorradores = [];
 
+  /* ARRAY */
+    let lista_ahorradores = [];
+  /* DOOM  Y EVENTOS */
     let formulario = document.getElementById("formulario");
+    /* FUNCION CREADORA DE AHORRADOR*/
     formulario.addEventListener("submit", function (e) {
       
       e.preventDefault();
@@ -72,40 +86,53 @@
 
       let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
+      //ahorrador = JSON.stringify(ahorrador)
+
       lista_ahorradores.push (ahorrador)
+
+      let arreglo_JSON = JSON.stringify (lista_ahorradores);
+
+      localStorage.setItem("lista_de_ahorradores", lista_ahorradores)
+
+      let recupero_ahorrador= localStorage.getItem("lista_de_ahorradores");
+
+      console.log(lista_ahorradores);
+
 
   })
   
-   
-
   console.log (lista_ahorradores)
-  
- let db_ahorradores = localStorage.setItem( 'lista_ahorradores',true)
- let busqueda_ahorradores = document.getElementById("busqueda_ahorradores")
- busqueda_ahorradores.addEventListener ("submit" ,function (e){
-  console.log (buscar_ahorrador)
- })
- 
+  /* JSON Y LOCAL STORAGE */
+  let ahorrador_JSON = JSON.stringify(Ahorrador)
+  console.log (Ahorrador);
+  console.log(ahorrador_JSON);
+   
+  localStorage.setItem("Ahorrador",ahorrador_JSON);
+ //let db_ahorradores = localStorage.setItem( 'lista_ahorradores',true)
+ let recupero_ahorrador = localStorage.getItem(Ahorrador);
+ console.log (recupero_ahorrador);
+
  for (let i=0 ; i < localStorage.length ; i = i + 1){
-     let ahorradores = localStorage.key(i)
-
-    //ahorrador.get_datos ()
+     let db_ahorradores = localStorage.key(i)
+     console.log ("el ahorador",db_ahorradores)
+     console.log (localStorage.getItem(db_ahorradores))
+      
    }
-
+/* FUNCION DE BUSQUEDA DE AHORRADORES */
   function buscar_ahorrador(ahorrador) {
-     return ahorrador.nombre = ahorrador_solicitado   
-   }
+     return ahorrador.nombre = ahorrador_solicitado
+     }
+     let ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
+     ahorrador_solicitado.addEventListener ("submit" , ahorrador_solicitado);
+     let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
+        if (resultado_Find != undefined ) {
+           console.log (resultado_Find)
+          }
+          else {
+           console.log("ahorrador no encontrado")
+          }
+  
 
-  let= ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
 
-  let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
 
-  if (resultado_Find != undefined ) {
-
-  console.log (resultado_Find)
-
- }
-  else {
-   console.log("ahorrador no encontrado")
-  }
-
+ 
