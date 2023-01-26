@@ -3,11 +3,13 @@
 /* LLAMADO A LA API */
 fetch("https://api.exchangerate.host/latest")
    .then(response =>response.json())
+   .then(data=>console.log(data))
 
    let peso = document.getElementById ("peso")    
+   peso.addEventListener = ("submit",function (e){
     console.log (data=>console.group(data.rates))
 
-
+   })
 
 
 //let terminar="";
@@ -86,7 +88,7 @@ fetch("https://api.exchangerate.host/latest")
 
       let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
-      //ahorrador = JSON.stringify(ahorrador)
+      ahorrador = JSON.stringify(ahorrador)
 
       lista_ahorradores.push (ahorrador)
 
@@ -104,10 +106,12 @@ fetch("https://api.exchangerate.host/latest")
   console.log (lista_ahorradores)
   /* JSON Y LOCAL STORAGE */
   let ahorrador_JSON = JSON.stringify(Ahorrador)
+ 
   console.log (Ahorrador);
-  console.log(ahorrador_JSON);
-   
-  localStorage.setItem("Ahorrador",ahorrador_JSON);
+  console.log(ahorrador_JSON)
+  localStorage.setItem(Ahorrador,ahorrador_JSON);
+  localStorage.getItem(Ahorrador);
+ 
  //let db_ahorradores = localStorage.setItem( 'lista_ahorradores',true)
  let recupero_ahorrador = localStorage.getItem(Ahorrador);
  console.log (recupero_ahorrador);
