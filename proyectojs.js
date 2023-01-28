@@ -151,15 +151,16 @@ var lista_ahorradores = createLocalStorage()
       
    }
 /* FUNCION DE BUSQUEDA DE AHORRADORES */
-    function buscar_ahorradores(ahorrador) {
-      return Ahorrador.nombre = ahorrador_solicitado
-    }
-
+    //function buscar_ahorradores(ahorrador) {
+    //  return Ahorrador.nombre = ahorrador_solicitado
+   // }
+     let resultado_Find = lista_ahorradores.find((  Ahorrador) => Ahorrador.nombre);
+     
      let ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
 
      ahorrador_solicitado.addEventListener ("submit" , function (e){
       
-      let resultado_Find = lista_ahorradores.find( buscar_ahorradores , Ahorrador);
+      //let resultado_Find = lista_ahorradores.find( buscar_ahorradores , Ahorrador);
       
       if (resultado_Find != undefined ) {
          console.log (resultado_Find)
