@@ -1,15 +1,19 @@
 
 
 /* LLAMADO A LA API */
-fetch("https://api.exchangerate.host/latest")
-   .then(response =>response.json())
-   .then(data=>console.log(data))
 
-   let peso = document.getElementById ("peso")    
-   peso.addEventListener = ("submit",function (e){
-    console.log (data=>console.group(data.rates))
 
-   })
+  fetch("https://api.exchangerate.host/latest")
+    .then(response => response.json())
+    .then((data) =>  {
+      let peso = document.getElementById ("peso")    
+      peso.onclick = () => console.log(data.rates.ARS);
+    
+  })
+    //console.log (data.rates.ARS)
+
+ 
+ 
 
 
 //let terminar="";
@@ -38,12 +42,38 @@ fetch("https://api.exchangerate.host/latest")
  /* OBJETO CLASE */
  class Ahorrador {
   constructor (ahorro_mes,nombre,horas_de_trabajo){
-
-    this.ahorro_mes = ahorro_mes;     
-    this.nombre = nombre ;
-    this.horas_de_trabajo = horas_de_trabajo ;
+ 
+    this.ahorro_mes = ahorro_mes.value;     
+    this.nombre = nombre.value ;
+    this.horas_de_trabajo = horas_de_trabajo.value ; 
   }
  }
+ 
+ 
+const createLocalStorage = () => {
+
+    if(localStorage.getItem('db')) {
+        return JSON.parse(localStorage.getItem('db'))
+    }  else {
+        var lista_ahorradores = []
+        localStorage.setItem('db',JSON.stringify(db))
+        return lista_ahorradores
+        
+    } 
+ }
+ 
+const syncLocalStorage = (lista_ahorradores) => { 
+   localStorage.setItem('db',JSON.stringify(lista_ahorradores))
+   return true
+}
+ 
+var lista_ahorradores = createLocalStorage()
+ 
+ 
+ 
+ 
+ 
+ 
 /* FIN OBJETO CLASE */
 
 //   get_datos () {
@@ -69,7 +99,7 @@ fetch("https://api.exchangerate.host/latest")
   //let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
   /* ARRAY */
-    let lista_ahorradores = [];
+  //  let lista_ahorradores = [];
   /* DOOM  Y EVENTOS */
     let formulario = document.getElementById("formulario");
     /* FUNCION CREADORA DE AHORRADOR*/
@@ -92,19 +122,17 @@ fetch("https://api.exchangerate.host/latest")
 
       lista_ahorradores.push (ahorrador)
 
-      let arreglo_JSON = JSON.stringify (lista_ahorradores);
+      syncLocalStorage(lista_ahorradores) //guardamos los cambios
 
-      localStorage.setItem("lista_de_ahorradores", lista_ahorradores)
-
-      let recupero_ahorrador= localStorage.getItem("lista_de_ahorradores");
-
+      lista_ahorradores = createLocalStorage() //traemos actualizada la db
+ 
+ 
       console.log(lista_ahorradores);
-
 
   })
   
-  console.log (lista_ahorradores)
   /* JSON Y LOCAL STORAGE */
+  
   let ahorrador_JSON = JSON.stringify(Ahorrador)
  
   console.log (Ahorrador);
@@ -123,19 +151,26 @@ fetch("https://api.exchangerate.host/latest")
       
    }
 /* FUNCION DE BUSQUEDA DE AHORRADORES */
-  function buscar_ahorrador(ahorrador) {
-     return ahorrador.nombre = ahorrador_solicitado
-     }
+    function buscar_ahorradores(ahorrador) {
+      return Ahorrador.nombre = ahorrador_solicitado
+    }
+
      let ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
-     ahorrador_solicitado.addEventListener ("submit" , ahorrador_solicitado);
-     let resultado_Find = lista_ahorradores.find(buscar_ahorrador);
-        if (resultado_Find != undefined ) {
-           console.log (resultado_Find)
-          }
-          else {
-           console.log("ahorrador no encontrado")
-          }
-  
+
+     ahorrador_solicitado.addEventListener ("submit" , function (e){
+      
+      let resultado_Find = lista_ahorradores.find( buscar_ahorradores , Ahorrador);
+      
+      if (resultado_Find != undefined ) {
+         console.log (resultado_Find)
+        }
+        else {
+         console.log("ahorrador no encontrado")
+        }
+
+     }) 
+
+
 
 
 
