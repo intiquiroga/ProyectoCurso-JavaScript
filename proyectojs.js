@@ -12,7 +12,13 @@
   })
     //console.log (data.rates.ARS)
 
- 
+
+
+  const displayCountDocsDB = (len) => {
+    dom = document.getElementById('countdb')
+    dom.innerHTML = len
+  }
+  
  
 
 
@@ -35,10 +41,6 @@
 // }
 
 
-
-  
-
-
  /* OBJETO CLASE */
  class Ahorrador {
   constructor (ahorro_mes,nombre,horas_de_trabajo){
@@ -49,16 +51,17 @@
   }
  }
  
- 
+//db= [] ;
 const createLocalStorage = () => {
 
     if(localStorage.getItem('db')) {
         return JSON.parse(localStorage.getItem('db'))
+        displayCountDocsDB(data.length)
+        return data
     }  else {
         var lista_ahorradores = []
         localStorage.setItem('db',JSON.stringify(db))
-        return lista_ahorradores
-        
+        return []
     } 
  }
  
@@ -68,6 +71,9 @@ const syncLocalStorage = (lista_ahorradores) => {
 }
  
 var lista_ahorradores = createLocalStorage()
+
+
+
  
  
  
@@ -118,7 +124,7 @@ var lista_ahorradores = createLocalStorage()
 
       let ahorrador = new Ahorrador (ahorro_mes, nombre, horas_de_trabajo);
 
-      ahorrador = JSON.stringify(ahorrador)
+      //ahorrador = JSON.stringify(ahorrador)
 
       lista_ahorradores.push (ahorrador)
 
@@ -128,49 +134,64 @@ var lista_ahorradores = createLocalStorage()
  
  
       console.log(lista_ahorradores);
+      formulario.reset ();
+
+      alert ('Documento guardado en la base de datos');
 
   })
   
   /* JSON Y LOCAL STORAGE */
   
-  let ahorrador_JSON = JSON.stringify(Ahorrador)
+  //let ahorrador_JSON = JSON.stringify(Ahorrador)
  
-  console.log (Ahorrador);
+  //console.log (Ahorrador);
   // REVISAR //console.log(ahorrador_JSON)
-  localStorage.setItem(Ahorrador,ahorrador_JSON);
-  localStorage.getItem(Ahorrador);
+  //localStorage.setItem(Ahorrador,ahorrador_JSON);
+  //localStorage.getItem(Ahorrador);
  
  //let db_ahorradores = localStorage.setItem( 'lista_ahorradores',true)
- let recupero_ahorrador = localStorage.getItem(Ahorrador);
- console.log (recupero_ahorrador);
+ //let recupero_ahorrador = localStorage.getItem(Ahorrador);
+ //console.log (recupero_ahorrador);
 
- let resultado_Find = lista_ahorradores.find((  Ahorrador) => Ahorrador.nombre);
+ //let resultado_Find = lista_ahorradores.find((  Ahorrador) => Ahorrador.nombre);
      
- let ahorrador_solicitado =document.getElementById ("buscar_ahorrador");
+ document.getElementById ("buscar_ahorrador").addEventListener ("submit",function (e){
 
- ahorrador_solicitado.addEventListener ("submit" , function (e){
+  e.preventDefault ()
+  lista_ahorradores = createLocalStorage ()
+  console.log (lista_ahorradores)
+
+  target =document.getElementById("search-form-value").value
+
+ //ahorrador_solicitado.addEventListener ("submit" , function (e){
   
   //let resultado_Find = lista_ahorradores.find( buscar_ahorradores , Ahorrador);
+  lista_ahorradores.forEach(element => {
+    console.log('search', element.nombre, target)
+
+    if (element.nombre == target ) {
+      console.warn (element)
+      return
+     }
+    
+  });
   
-  if (resultado_Find != undefined ) {
-     console.log (resultado_Find)
-    }
-    else {
-     console.log("ahorrador no encontrado")
-    }
 
- }) 
+  })
 
- for (let i=0 ; i < localStorage.length ; i = i + 1){
-     let db_ahorradores = localStorage.key(i)
-     console.log ("el ahorador",db_ahorradores.nombre)
-     console.log (localStorage.getItem(db_ahorradores))
+  
+
+ //for (let i=0 ; i < localStorage.length ; i = i + 1){
+     //let db_ahorradores = localStorage.key(i)
+     //console.log ("el ahorador",db_ahorradores.nombre)
+     //console.log (localStorage.getItem(db_ahorradores))
       
-   }
+   //}
 /* FUNCION DE BUSQUEDA DE AHORRADORES */
     //function buscar_ahorradores(ahorrador) {
     //  return Ahorrador.nombre = ahorrador_solicitado
    // }
+
 
 
 

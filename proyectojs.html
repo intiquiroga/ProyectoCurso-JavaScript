@@ -25,13 +25,16 @@
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
               <form id="buscar_ahorrador"class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-form-value">
                 <button class="btn btn-outline-success" type="submit">BUSCAR AHORRADOR</button>
               </form>
             </div>
           </nav>
     </header>
     <section>
+      <div style="margin-top:50px;margin-bottom:50px">
+        <h5>Registros totales en la base de datos : <b id="countdb">0</b></h5>
+      </div>
         <div>
             <form action="" id="formulario">
                 <fieldset>
